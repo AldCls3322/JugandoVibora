@@ -20,6 +20,16 @@ def move():
     head = snake[-1].copy()
     head.move(aim)
 
+    "La comida se mueve"
+    if not(randint(0,100)>20):
+        dx = randint(-1, 1) * 10
+        dy = randint(-1, 1) * 10
+        food.x += dx
+        food.y += dy
+        if(not inside(food)):
+            food.x -= dx
+            food.y -= dy
+    
     if not inside(head) or head in snake:
         square(head.x, head.y, 9, 'red')
         update()
